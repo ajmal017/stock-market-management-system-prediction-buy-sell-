@@ -1,0 +1,157 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>register</title>
+
+
+	     <link rel="stylesheet" href="form.css">
+
+ <!-- Bootstrap Css -->
+    <link href="bootstrap-assets/css/bootstrap.min.css" rel="stylesheet">
+<script>
+function validateForm() {
+    var x = document.forms["myForm"]["email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length | x.charAt(atpos+1)=="." || x.charAt(atpos-1)=="." ){
+      //  alert("Not a valid e-mail address");
+        document.getElementById("error").innerHTML = "Not a valid e-mail address";
+        return false;
+    }
+
+    var password = document.forms["myForm"]["password"].value;
+    var confirmpassword = document.forms["myForm"]["confirmpassword"].value;
+
+     var n = password.localeCompare(confirmpassword);
+     var i;
+    if(n != 0)
+     {
+     	 document.getElementById("error").innerHTML = "password doesnot match";
+     	 //alert("password doesnot match");
+     	 //window.location.href = "http://www.google.com";
+     	 return false;
+     }
+
+     var pancard = document.forms["myForm"]["pancard"].value;
+   var pan = pancard.split("");
+   for (i = 0; i < pan.length; i++) { 
+   
+       if ( (pan[i]>="A" && pan[i]<="Z" && i<5) || (pan[i]>="0" && pan[i]<="9" && i<9)|| (pan[i]>="A" && pan[i]<="Z" && i==9) ) 
+		{}
+		else break
+
+  	}
+
+  if (i!=10) 
+  	{
+  		document.getElementById("error").innerHTML = "invalid pancard";
+     	 //alert("password doesnot match");
+     	 //window.location.href = "http://www.google.com";
+     	 return false;
+  	};
+
+
+
+}
+</script>
+</head>
+
+
+
+<body>
+
+
+
+<div>
+
+
+
+ <div class="fullscreen-bg">
+        <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
+            <source src="stock-footage-stock-market-trend-of-animation.mp4" type="video/mp4">
+           
+        </video>
+  </div>
+
+<h1>Sign Up</h1>
+<h2>It's always free!!</h2>
+<p style="color:red" id="error"></p>
+<div align="center">
+	
+	
+   <form id="myForm" action="insertform.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+	<table>
+		
+
+	<tr>
+
+		<td align="right">name:</td>
+		<td align="left"><input type="text" name="name" placeholder="Name" required></td>
+	</tr>
+
+
+	<tr>
+		<td align="right" rowspan="4">gender:</td>
+	
+		<td align="left">
+				<tr> <td align="left"><input type="radio" name="gender" value="male" checked> Male</td>
+  				<tr><td align="left"><input type="radio" name="gender" value="female"> Female</td></tr>
+  				<tr><td align="left"><input type="radio" name="gender" value="other"> Other</td></tr>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="right">Email:</td>
+		<td><input type="email" name="email" placeholder="Email" required></td>
+	</tr>
+	
+	<tr >
+		<td align="right">password:</td>
+		<td><input type="password" name="password" placeholder="Password" required></td>
+	</tr>
+
+	<tr >
+		<td align="right">confirm password:</td>
+		<td><input type="password" name="confirmpassword" placeholder="confirmpassword" required></td>
+	</tr>
+	<tr><td align="center" colspan="2">--enter details--</td></tr>
+	
+	<tr >
+		<td align="right">ID proof(aadhar):	
+		</td>
+		<td><input type="file" name="idproof" placeholder="ID proof" required></td>
+	</tr>
+
+	<tr >
+		<td align="right">Pan card No.:</td>
+		<td><input type="text" name="pancard" placeholder="Pan card No." required></td>
+	</tr>
+
+	<tr >
+		<td align="right">Bank account No.:</td>
+		<td><input type="text" name="bankaccount" placeholder="Bank account No." required></td>
+	</tr>
+
+ 
+	 <tr>
+	 	<td align="right"><input name="submit	" type="submit" value="submit" ></td>
+	</tr>
+	 	 
+  </table>
+</form>
+
+</div>
+
+<center>
+ </center>
+  </div>
+
+</body>
+
+
+
+
+</html>
