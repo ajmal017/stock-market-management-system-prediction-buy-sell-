@@ -5,4 +5,4 @@ The index file is in
 sms\RISE-Multipurpose html template\template-assets\index.php
 location
 
-This Website is hosted at www.hnksecurities.16mb.com 
+
